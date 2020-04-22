@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03AEFD</color>
+    <color name="colorPrimaryDark">#03AEFD</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="black">#000</color>
+    <color name="black_f8">#f8f8f8</color>
+    <color name="black_f0">#f0f0f0</color>
+    <color name="black_e">#eee</color>
+    <color name="black_e0">#e0e0e0</color>
+    <color name="black_d">#ddd</color>
+    <color name="black_d0">#d0d0d0</color>
+    <color name="black_c">#ccc</color>
+    <color name="black_b">#bbb</color>
+    <color name="black_9">#999</color>
+    <color name="black_6">#666</color>
+    <color name="black_3">#333</color>
+    <color name="white">#fff</color>
+    <color name="red">#B40000</color>
+    <color name="purple">#AA00AA</color>
+    <color name="yellow">#B4B400</color>
+    <color name="green">#00A500</color>
+    <color name="blue">#0000AA</color>
+    <color name="cyan">#00B6B6</color>
+    <!--启动页面-->
+    <color name="splash_bg">#213747</color>
+</resources>
