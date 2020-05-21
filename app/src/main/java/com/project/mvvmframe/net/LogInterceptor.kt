@@ -16,6 +16,7 @@ class LogInterceptor : Interceptor {
     private val mUTF8 = Charset.forName("UTF-8")
     private val mTAG = "OKHttpRequest"
 
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         LogUtils.v(mTAG, "-----------------------------------------> START_REQUEST")

@@ -1,9 +1,10 @@
 package com.project.mvvmframe.net
 
 import com.project.mvvmframe.constant.ApiConfig
-import io.reactivex.Observable
-import okhttp3.ResponseBody
-import retrofit2.http.Body
+import com.project.mvvmframe.entity.BaseBean
+import com.project.mvvmframe.entity.WeatherBean
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 /**
@@ -13,8 +14,9 @@ import retrofit2.http.POST
  */
 interface ApiService {
 
-    @POST(ApiConfig.LOGIN)
-    suspend fun login(@Body body: Map<String, String>): Observable<ResponseBody>
+    @POST(ApiConfig.QUERY_WEATHER)
+    @FormUrlEncoded
+    suspend fun queryWeather(@Field("key") key: String, @Field("cityname") cityname: String): BaseBean<WeatherBean>
 
     /*  //我的奖品列表
       @FormUrlEncoded

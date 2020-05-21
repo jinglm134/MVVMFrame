@@ -94,6 +94,7 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
     abstract fun initVM(): VM
     @LayoutRes
     abstract fun bindLayout(): Int
+
     abstract fun initView(contentView: View)
     protected open fun setListener() {}
     abstract fun startObserve()
