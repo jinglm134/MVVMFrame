@@ -9,7 +9,7 @@ import com.project.mvvmframe.app.BaseApp
  * @CreateDate 2020/4/21 18:04
  * @Author jaylm
  */
-object ToastUtils {
+object UToast {
     private var sToast: Toast? = null
     private var isJumpWhenMore: Boolean = true
 
@@ -21,7 +21,7 @@ object ToastUtils {
      * 如果为false的话可用来做显示任意时长的吐司
      */
     fun init(isJumpWhenMore: Boolean) {
-        ToastUtils.isJumpWhenMore = isJumpWhenMore
+        UToast.isJumpWhenMore = isJumpWhenMore
     }
 
 

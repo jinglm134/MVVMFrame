@@ -8,7 +8,7 @@ import com.project.mvvmframe.BuildConfig
  * @CreateDate 2020/4/21 18:03
  * @Author jaylm
  */
-object LogUtils {
+object ULog {
 
     private var logSwitch = BuildConfig.DEBUG
     private var tag = "TAG"

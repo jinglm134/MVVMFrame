@@ -15,6 +15,7 @@ class MainActivity : BaseVMActivity<MainVM>() {
     override fun bindLayout(): Int = R.layout.activity_main
 
     override fun initView(contentView: View) {
+        setHeader("测试")
         mViewModel.login("北京")
     }
 

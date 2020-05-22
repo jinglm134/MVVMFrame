@@ -19,20 +19,21 @@ class MainVM : BaseViewModel() {
     val uiState = MutableLiveData<WeatherBean>()
     fun login(city: String) {
         launchOnUI {
-            val result = RetrofitClient.service.queryWeather(ApiConfig.API_KEY, city)
-            if (result.error_code == 0) {
-                uiState.value = result.result
+            val result =
+                safeApiCall(call = { RetrofitClient.service.queryWeather(ApiConfig.API_KEY, city) })
+            if (result != null) {
+                uiState.value = result
             }
         }
 
-        GlobalScope.launch {
-            val result = withContext(Dispatchers.Default) {
-                RetrofitClient.service.queryWeather(ApiConfig.API_KEY, city)
-            }
-            if (result.error_code == 0) {
-                uiState.value = result.result
-            }
-        }
-
+//        GlobalScope.launch {
+//            val result = withContext(Dispatchers.Default) {
+//                RetrofitClient.service.queryWeather(ApiConfig.API_KEY, city)
+//            }
+//            if (result.error_code == 0) {
+//                uiState.value = result.result
+//            }
+//        }
     }
 }
+

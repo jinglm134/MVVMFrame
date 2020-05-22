@@ -2,7 +2,7 @@ package com.project.mvvmframe.net
 
 import com.project.mvvmframe.constant.ApiDomain
 import com.project.mvvmframe.constant.SPConst
-import com.project.mvvmframe.util.LogUtils
+import com.project.mvvmframe.util.ULog
 import com.project.mvvmframe.util.SPUtils
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.Interceptor
@@ -45,7 +45,7 @@ class HeaderInterceptor : Interceptor {
 //                .addEncodedPathSegment(newBaseUrl.encodedPath())
 //                .removePathSegment(0)//移除第一个参数v1
                 .build()
-            LogUtils.v("HeaderInterceptor", "url_intercept = $newFullUrl")
+            ULog.v("HeaderInterceptor", "url_intercept = $newFullUrl")
             request = builder.url(newFullUrl).build()
         }
 

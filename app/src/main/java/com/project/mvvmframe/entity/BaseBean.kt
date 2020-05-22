@@ -5,4 +5,4 @@ package com.project.mvvmframe.entity
  * @CreateDate 2020/5/21 11:52
  * @Author jaylm
  */
-data class BaseBean<T>(val error_code: Int, val reason: String, val result: T) : IBaseBean
+data class BaseBean<out T : Any>(val error_code: Int, val reason: String, val result: T) : IBaseBean

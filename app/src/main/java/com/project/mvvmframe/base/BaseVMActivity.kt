@@ -16,10 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.project.mvvmframe.BuildConfig
 import com.project.mvvmframe.R
-import com.project.mvvmframe.util.LogUtils
-import com.project.mvvmframe.util.ToastUtils
+import com.project.mvvmframe.util.ULog
+import com.project.mvvmframe.util.UToast
 import kotlinx.android.synthetic.main.activity_base.*
-import java.util.*
 
 /**
  * @CreateDate 2020/4/21 18:00
@@ -42,10 +41,8 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     lateinit var mViewModel: VM
     /** 当前Activity渲染的视图View */
-    lateinit var mRootView: View
-    /** 用来保存所有在栈内的Activity  */
-    private val mActivityStacks = Stack<Activity>()
-    protected lateinit var mActivity: Activity
+    private lateinit var mRootView: View
+    private lateinit var mActivity: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,9 +77,6 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
         setContentView(R.layout.activity_base)
         initToolbar()
         mRootView = LayoutInflater.from(mActivity).inflate(bindLayout(), base_container, true)
-        // 将activity推入栈中
-        mActivityStacks.push(this)
-//        mBinder = ButterKnife.bind(this)
 
         mViewModel = initVM()
         startObserve()
@@ -193,25 +187,10 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
      * @param msg
      */
     protected fun log(msg: Any) {
-        LogUtils.v(TAG, msg)
+        ULog.v(TAG, msg)
     }
 
     fun showToast(str: CharSequence) {
-        ToastUtils.showShortToast(str)
-    }
-
-
-    //退出应用
-    protected fun exit() {
-        for (i in 0..mActivityStacks.size) {
-            mActivityStacks[i].finish()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (mActivityStacks.contains(this)) {
-            mActivityStacks.remove(this)
-        }
+        UToast.showShortToast(str)
     }
 }

@@ -1,6 +1,6 @@
 package com.project.mvvmframe.net
 
-import com.project.mvvmframe.util.LogUtils
+import com.project.mvvmframe.util.ULog
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
@@ -19,8 +19,8 @@ class LogInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        LogUtils.v(mTAG, "-----------------------------------------> START_REQUEST")
-        LogUtils.v(mTAG, "requestUrl:$request")
+        ULog.v(mTAG, "-----------------------------------------> START_REQUEST")
+        ULog.v(mTAG, "requestUrl:$request")
         val requestBody = request.body
         if (requestBody != null) {
             val buffer = Buffer()
@@ -32,7 +32,7 @@ class LogInterceptor : Interceptor {
                 charset = contentType.charset(mUTF8)!!
             }
 
-            LogUtils.v(
+            ULog.v(
                 mTAG,
                 "requestBody:${buffer.readString(charset)}"
             )
@@ -41,15 +41,15 @@ class LogInterceptor : Interceptor {
         val t1 = System.nanoTime()
         val response = chain.proceed(chain.request())
         val t2 = System.nanoTime()
-        LogUtils.v(
+        ULog.v(
             mTAG,
             "Received response for ${response.request.url} in ${(t2 - t1) / 1e6}ms"
         )
 
         val mediaType = response.body!!.contentType()
         val content = response.body!!.string()
-        LogUtils.long(mTAG, "response body:$content")
-        LogUtils.v(mTAG, "-----------------------------------------> END_RESPONSE\n")
+        ULog.long(mTAG, "response body:$content")
+        ULog.v(mTAG, "-----------------------------------------> END_RESPONSE\n")
         return response.newBuilder()
             .body(content.toResponseBody(mediaType))
             .build()
