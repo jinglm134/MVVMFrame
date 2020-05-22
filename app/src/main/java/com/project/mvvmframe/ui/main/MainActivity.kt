@@ -16,7 +16,7 @@ class MainActivity : BaseVMActivity<MainVM>() {
 
     override fun initView(contentView: View) {
         setHeader("测试")
-        mViewModel.login("北京")
+        mViewModel.queryWeather("北京")
     }
 
     override fun startObserve() {
@@ -31,7 +31,7 @@ class MainActivity : BaseVMActivity<MainVM>() {
     override fun setListener() {
         super.setListener()
         btn1.setOnClickListener {
-            mViewModel.login("广州")
+            mViewModel.queryWeather("广州")
         }
     }
 

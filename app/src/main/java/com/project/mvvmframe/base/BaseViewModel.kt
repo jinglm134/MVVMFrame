@@ -40,7 +40,6 @@ open class BaseViewModel : ViewModel() {
             mDialog?.dismiss()
             return data
         }
-
     }
 
 
