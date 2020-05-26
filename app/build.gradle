@@ -66,7 +66,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.7.1' //retrofit
     implementation "com.squareup.retrofit2:converter-gson:2.6.2"//gson
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'//rxjava2
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.0'//日志拦截
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.0'//日志拦截
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'//刷新框架
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2'//刷新框架头部
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.1'//适配器框架

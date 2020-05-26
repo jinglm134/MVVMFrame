@@ -2,17 +2,14 @@ package com.project.mvvmframe.ui.main
 
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.project.mvvmframe.R
 import com.project.mvvmframe.base.BaseVMActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseVMActivity<MainVM>() {
-    override fun initVM(): MainVM {
-        return ViewModelProvider(this)[MainVM::class.java]
-    }
 
     override fun bindLayout(): Int = R.layout.activity_main
+    override fun providerVMClass(): Class<MainVM> = MainVM::class.java
 
     override fun initView(contentView: View) {
         setHeader("测试")
@@ -34,5 +31,4 @@ class MainActivity : BaseVMActivity<MainVM>() {
             mViewModel.queryWeather("广州")
         }
     }
-
 }
