@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
  */
 open class BaseViewModel : ViewModel() {
 
-    private var mDialog: ProgressDialog? = null
+    private var builder: ProgressDialog.Builder? = null
     fun launchOnUI(block: suspend CoroutineScope.() -> Unit) {
         viewModelScope.launch { block() }
     }
@@ -26,10 +26,10 @@ open class BaseViewModel : ViewModel() {
     suspend fun <T : Any> safeApiCall(call: suspend () -> BaseBean<T>): T? {
         var data: T? = null
         try {
-            if (mDialog == null) {
-                mDialog = ProgressDialog(AppManager.appManager.currentActivity())
+            if (builder == null) {
+                builder = ProgressDialog.Builder(AppManager.appManager.currentActivity())
             }
-            mDialog?.show()
+            builder?.show()
             val result = call()
             if (result.error_code == 0) {
                 data = result.result
@@ -37,11 +37,10 @@ open class BaseViewModel : ViewModel() {
         } catch (e: Exception) {
             UToast.showShortToast(RequestException.exceptionHandler(e))
         } finally {
-            mDialog?.dismiss()
+            builder?.dismiss()
             return data
         }
     }
-
 
     suspend fun <T> launchOnIO(block: suspend CoroutineScope.() -> T) {
         withContext(Dispatchers.IO) {

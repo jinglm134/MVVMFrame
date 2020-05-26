@@ -36,7 +36,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     /** 当前Activity渲染的视图View */
     private lateinit var mRootView: View
-    private lateinit var mActivity: Activity
+    protected lateinit var mActivity: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

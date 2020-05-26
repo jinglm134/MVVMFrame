@@ -21,13 +21,18 @@
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" /><!--google search-->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTask" />
+
     </application>
 
 </manifest>

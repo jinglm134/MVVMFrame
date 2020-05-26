@@ -2,6 +2,7 @@
 
 package com.project.mvvmframe.util
 
+import android.R
 import android.annotation.SuppressLint
 import android.graphics.*
 import android.graphics.drawable.Drawable
@@ -29,22 +30,16 @@ object UShape {
      */
     private fun getCircleBitmap(bitmap: Bitmap): Bitmap {
         val min = 200
-
         val outBitmap = Bitmap.createBitmap(
             min,
             min, Bitmap.Config.ARGB_8888
         )
-
         val paint = Paint()
         paint.isAntiAlias = true
-
         val rect = Rect(0, 0, min, min)
-
         val canvas = Canvas(outBitmap)
         canvas.drawCircle((min / 2).toFloat(), (min / 2).toFloat(), (min / 2).toFloat(), paint)
-
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-
         canvas.drawBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height), rect, paint)
         return outBitmap
 
@@ -66,18 +61,13 @@ object UShape {
             min,
             min, Bitmap.Config.ARGB_8888
         )
-
         val paint = Paint()
         paint.isAntiAlias = true
-
         val rect = Rect(0, 0, min, min)
         val rectF = RectF(rect)
-
         val canvas = Canvas(outBitmap)
         canvas.drawRoundRect(rectF, radius.toFloat(), radius.toFloat(), paint)
-
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-
         canvas.drawBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height), rect, paint)
         return outBitmap
     }
@@ -127,41 +117,44 @@ object UShape {
      * @param corner        圆角大小
      */
     private fun getSelectorDrawable(
-        normalColor: Int,
-        checkedColor: Int,
-        selectedColor: Int,
-        pressColor: Int,
-        corner: Int
+        normalColor: Int = 0,
+        checkedColor: Int = 0,
+        selectedColor: Int = 0,
+        pressColor: Int = 0,
+        corner: Int = 0
     ): StateListDrawable {
-        val listDrawable = StateListDrawable()
-
+        val listDrawable =
+            StateListDrawable()
         if (checkedColor != 0) {
             listDrawable.addState(
-                intArrayOf(-android.R.attr.state_checked),
+                intArrayOf(-R.attr.state_checked),
                 setShapeDrawablePadding(getCornerDrawable(normalColor, corner), null)
             )
             listDrawable.addState(
-                intArrayOf(android.R.attr.state_checked),
+                intArrayOf(R.attr.state_checked),
                 setShapeDrawablePadding(getCornerDrawable(checkedColor, corner), null)
             )
         }
         if (selectedColor != 0) {
             listDrawable.addState(
-                intArrayOf(-android.R.attr.state_selected),
+                intArrayOf(-R.attr.state_selected),
                 setShapeDrawablePadding(getCornerDrawable(normalColor, corner), null)
             )
             listDrawable.addState(
-                intArrayOf(android.R.attr.state_selected),
-                setShapeDrawablePadding(getCornerDrawable(selectedColor, corner), null)
+                intArrayOf(R.attr.state_selected),
+                setShapeDrawablePadding(
+                    getCornerDrawable(selectedColor, corner),
+                    null
+                )
             )
         }
         if (pressColor != 0) {
             listDrawable.addState(
-                intArrayOf(-android.R.attr.state_pressed),
+                intArrayOf(-R.attr.state_pressed),
                 setShapeDrawablePadding(getCornerDrawable(normalColor, corner), null)
             )
             listDrawable.addState(
-                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(R.attr.state_pressed),
                 setShapeDrawablePadding(getCornerDrawable(pressColor, corner), null)
             )
         }
@@ -175,6 +168,33 @@ object UShape {
     }
 
 
+    private fun getSelectorDrawable(
+        normalDrawable: Drawable? = null,
+        checkedDrawable: Drawable? = null,
+        selectedDrawable: Drawable? = null,
+        pressDrawable: Drawable? = null
+    ): StateListDrawable {
+        val listDrawable =
+            StateListDrawable()
+        if (checkedDrawable != null) {
+            listDrawable.addState(intArrayOf(-R.attr.state_checked), normalDrawable)
+            listDrawable.addState(intArrayOf(R.attr.state_checked), checkedDrawable)
+        }
+        if (selectedDrawable != null) {
+            listDrawable.addState(intArrayOf(-R.attr.state_selected), normalDrawable)
+            listDrawable.addState(intArrayOf(R.attr.state_selected), selectedDrawable)
+        }
+        if (pressDrawable != null) {
+            listDrawable.addState(intArrayOf(-R.attr.state_pressed), normalDrawable)
+            listDrawable.addState(intArrayOf(R.attr.state_pressed), pressDrawable)
+        }
+        if (normalDrawable != null) {
+            listDrawable.addState(intArrayOf(), normalDrawable)
+        }
+        return listDrawable
+    }
+
+
     /**
      * checkedSelector
      *
@@ -182,8 +202,32 @@ object UShape {
      * @param checkedColor state_check=true选中的颜色
      * @param corner       圆角大小
      */
-    fun getCheckedDrawable(normalColor: Int, checkedColor: Int, corner: Int): StateListDrawable {
-        return getSelectorDrawable(normalColor, checkedColor, 0, 0, corner)
+    fun getCheckedDrawable(
+        normalColor: Int,
+        checkedColor: Int,
+        corner: Int
+    ): StateListDrawable {
+        return getSelectorDrawable(
+            normalColor = normalColor,
+            checkedColor = checkedColor,
+            corner = corner
+        )
+    }
+
+    /**
+     * checkedSelector
+     *
+     * @param normalDrawable  原本的Drawable
+     * @param checkedDrawable state_check=true选中的Drawable
+     */
+    fun getCheckedDrawable(
+        normalDrawable: Drawable,
+        checkedDrawable: Drawable
+    ): StateListDrawable {
+        return getSelectorDrawable(
+            normalDrawable = normalDrawable,
+            checkedDrawable = checkedDrawable
+        )
     }
 
     /**
@@ -193,8 +237,32 @@ object UShape {
      * @param selectedColor state_selector=true选中的颜色
      * @param corner        圆角大小
      */
-    fun getSelectedDrawable(normalColor: Int, selectedColor: Int, corner: Int): StateListDrawable {
-        return getSelectorDrawable(normalColor, 0, selectedColor, 0, corner)
+    fun getSelectedDrawable(
+        normalColor: Int,
+        selectedColor: Int,
+        corner: Int
+    ): StateListDrawable {
+        return getSelectorDrawable(
+            normalColor = normalColor,
+            selectedColor = selectedColor,
+            corner = corner
+        )
+    }
+
+    /**
+     * SelectedSelector
+     *
+     * @param normalDrawable   原本的Drawable
+     * @param selectedDrawable state_selector=true选中的Drawable
+     */
+    fun getSelectedDrawable(
+        normalDrawable: Drawable,
+        selectedDrawable: Drawable
+    ): StateListDrawable {
+        return getSelectorDrawable(
+            normalDrawable = normalDrawable,
+            selectedDrawable = selectedDrawable
+        )
     }
 
     /**
@@ -204,8 +272,29 @@ object UShape {
      * @param pressColor  state_press=true按下的颜色
      * @param corner      圆角大小
      */
-    fun getPressedDrawable(normalColor: Int, pressColor: Int, corner: Int): StateListDrawable {
-        return getSelectorDrawable(normalColor, 0, 0, pressColor, corner)
+    fun getPressedDrawable(
+        normalColor: Int,
+        pressColor: Int,
+        corner: Int
+    ): StateListDrawable {
+        return getSelectorDrawable(
+            normalColor = normalColor,
+            pressColor = pressColor,
+            corner = corner
+        )
+    }
+
+    /**
+     * pressedSelector
+     *
+     * @param normalDrawable 原本的Drawable
+     * @param pressDrawable  state_press=true按下的Drawable
+     */
+    fun getPressedDrawable(
+        normalDrawable: Drawable,
+        pressDrawable: Drawable
+    ): StateListDrawable {
+        return getSelectorDrawable(normalDrawable = normalDrawable, pressDrawable = pressDrawable)
     }
 
 
@@ -233,31 +322,31 @@ object UShape {
 
         if (checkedColor != 0) {
             listDrawable.addState(
-                intArrayOf(-android.R.attr.state_checked),
+                intArrayOf(-R.attr.state_checked),
                 setShapeDrawablePadding(getCornerDrawable(normalColor, corners), null)
             )
             listDrawable.addState(
-                intArrayOf(android.R.attr.state_checked),
+                intArrayOf(R.attr.state_checked),
                 setShapeDrawablePadding(getCornerDrawable(checkedColor, corners), null)
             )
         }
         if (selectedColor != 0) {
             listDrawable.addState(
-                intArrayOf(-android.R.attr.state_selected),
+                intArrayOf(-R.attr.state_selected),
                 setShapeDrawablePadding(getCornerDrawable(normalColor, corners), null)
             )
             listDrawable.addState(
-                intArrayOf(android.R.attr.state_selected),
+                intArrayOf(R.attr.state_selected),
                 setShapeDrawablePadding(getCornerDrawable(selectedColor, corners), null)
             )
         }
         if (pressColor != 0) {
             listDrawable.addState(
-                intArrayOf(-android.R.attr.state_pressed),
+                intArrayOf(-R.attr.state_pressed),
                 setShapeDrawablePadding(getCornerDrawable(normalColor, corners), null)
             )
             listDrawable.addState(
-                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(R.attr.state_pressed),
                 setShapeDrawablePadding(getCornerDrawable(pressColor, corners), null)
             )
         }
@@ -388,5 +477,4 @@ object UShape {
             context.resources.getColor(rId)
         }
     }
-
 }
