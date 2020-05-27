@@ -2,6 +2,7 @@ package com.project.mvvmframe.net
 
 import com.project.mvvmframe.constant.ApiConfig
 import com.project.mvvmframe.entity.BaseBean
+import com.project.mvvmframe.entity.NewsBean
 import com.project.mvvmframe.entity.WeatherBean
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -16,7 +17,18 @@ interface ApiService {
 
     @POST(ApiConfig.QUERY_WEATHER)
     @FormUrlEncoded
-    suspend fun queryWeather(@Field("key") key: String, @Field("cityname") cityname: String): BaseBean<WeatherBean>
+    suspend fun queryWeather(
+        @Field("key") key: String,
+        @Field("cityname") cityname: String
+    ): BaseBean<WeatherBean>
+
+    @POST(ApiConfig.QUERY_NEWS)
+    @FormUrlEncoded
+    suspend fun queryNews(
+        @Field("key") key: String,
+        @Field("keyword") keyword: String
+    ): BaseBean<List<NewsBean>>
+
 
     /*  //我的奖品列表
       @FormUrlEncoded

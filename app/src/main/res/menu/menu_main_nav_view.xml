@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@mipmap/icon_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/menu_news"
+        android:icon="@mipmap/icon_news"
+        android:title="@string/news" />
+
+    <item
+        android:id="@+id/menu_weather"
+        android:icon="@mipmap/icon_weather"
+        android:title="@string/weather" />
+
+    <item
+        android:id="@+id/menu_personal"
+        android:icon="@mipmap/icon_personal"
+        android:title="@string/personal" />
+  
+</menu>

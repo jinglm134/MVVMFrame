@@ -35,7 +35,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColor="@android:color/white"
-            tools:drawableStart="@mipmap/ic_launcher"
+            tools:drawableStart="@mipmap/icon_launcher"
             tools:text="please setting text" />
     </androidx.appcompat.widget.Toolbar>
 

@@ -1,5 +1,6 @@
 package com.project.mvvmframe.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ abstract class BaseFragment : Fragment() {
 
     /*默认可见,用于懒加载*/
     private var hasVisible = true
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -103,7 +105,7 @@ abstract class BaseFragment : Fragment() {
         } else {// toFragment还没添加使用过->添加上去
             transaction.add(idRes, toFragment, tag)
         }
-        transaction.commitAllowingStateLoss()
+        transaction.commitNowAllowingStateLoss()
         // toFragment 更新为当前的
         currentFragment = toFragment
     }

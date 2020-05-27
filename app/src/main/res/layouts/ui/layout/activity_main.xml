@@ -1,59 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.main.MainActivity">
 
-    <TextView
-        android:id="@+id/tv1"
+    <FrameLayout
+        android:id="@+id/fl_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_3"
-        android:textSize="16dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="8dp"
         android:background="@color/black_f0" />
 
-    <TextView
-        android:id="@+id/tv2"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black_3"
-        android:textSize="16dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black_f0" />
-
-
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_3"
-        android:textSize="16dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black_f0" />
-
-    <TextView
-        android:id="@+id/tv4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_3"
-        android:textSize="16dp" />
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:background="@null"
-        android:text="点击" />
+        app:itemIconTint="@drawable/check_nav_view_color"
+        app:itemTextColor="@drawable/check_nav_view_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_main_nav_view" />
 </LinearLayout>

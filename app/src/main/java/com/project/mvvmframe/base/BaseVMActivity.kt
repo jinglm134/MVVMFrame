@@ -18,5 +18,5 @@ abstract class BaseVMActivity<VM : BaseViewModel> : BaseActivity() {
     }
 
     abstract fun providerVMClass(): Class<VM>
-    abstract fun startObserve()
+    open fun startObserve() {}
 }

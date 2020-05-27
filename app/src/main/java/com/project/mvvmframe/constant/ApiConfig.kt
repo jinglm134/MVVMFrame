@@ -7,4 +7,5 @@ package com.project.mvvmframe.constant
 object ApiConfig {
     const val API_KEY = "7ff61ea1c992418bad46ea53e1234971"
     const val QUERY_WEATHER = "Weather/Query"
+    const val QUERY_NEWS = "ActNews/Query"
 }

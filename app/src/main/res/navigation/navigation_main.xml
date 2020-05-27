@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.project.mvvmframe.ui.main.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.project.mvvmframe.ui.main.news.NewsFragment"
+        android:label="NewsFragment"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.project.mvvmframe.ui.main.weather.WeatherFragment"
+        android:label="WeatherFragment"
+        tools:layout="@layout/fragment_weather">
+
+    </fragment>
+
+
+</navigation>

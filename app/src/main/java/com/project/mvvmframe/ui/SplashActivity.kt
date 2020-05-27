@@ -66,7 +66,7 @@ class SplashActivity : BaseActivity() {
                 }
 
                 permission.shouldShowRequestPermissionRationale -> {
-                    DialogUtils.showTwoDialog(context = mActivity,
+                    DialogUtils.showTwoDialog(mActivity,
                         message = "请允许开启权限以正常使用app功能",
                         positiveBtnName = "确定",
                         positiveListener = View.OnClickListener { requestPermission() },

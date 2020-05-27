@@ -172,7 +172,7 @@ abstract class BaseActivity : AppCompatActivity() {
         } else {// toFragment还没添加使用过->添加上去
             transaction.add(idRes, toFragment, tag)
         }
-        transaction.commitAllowingStateLoss()
+        transaction.commitNowAllowingStateLoss()
         // toFragment 更新为当前的
         currentFragment = toFragment
     }
