@@ -1,7 +1,6 @@
 package com.project.mvvmframe.base
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 
 /**
  * @CreateDate 2020/5/26 16:23
@@ -11,12 +10,15 @@ abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
     lateinit var mViewModel: VM
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        providerVMClass().apply {
-            mViewModel = ViewModelProvider(this@BaseVMFragment).get(this)
-        }
+//        val apply = providerVMClass().apply {
+//            mViewModel = ViewModelProvider(requireActivity())[this]
+//        }
+        mViewModel = initVM()
         startObserve()
     }
 
-    abstract fun providerVMClass(): Class<VM>
+    abstract fun initVM(): VM
+
+    //    abstract fun providerVMClass(): Class<VM>
     open fun startObserve() {}
 }

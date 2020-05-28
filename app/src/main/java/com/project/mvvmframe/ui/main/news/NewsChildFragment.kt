@@ -1,12 +1,15 @@
 package com.project.mvvmframe.ui.main.news
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.mvvmframe.R
 import com.project.mvvmframe.adapter.NewsAdapter
 import com.project.mvvmframe.base.BaseVMFragment
 import com.project.mvvmframe.entity.NewsBean
+import com.project.mvvmframe.ui.main.MainVM
 import com.project.mvvmframe.util.UToast
 import com.project.mvvmframe.widget.decoration.LinearDecoration
 import kotlinx.android.synthetic.main.layout_recyclerview.*
@@ -28,7 +31,8 @@ class NewsChildFragment : BaseVMFragment<NewsVM>() {
         }
     }
 
-    override fun providerVMClass(): Class<NewsVM> = NewsVM::class.java
+    //    override fun providerVMClass() = NewsVM::class.java
+    override fun initVM() = ViewModelProvider(this).get(NewsVM::class.java)
     override fun bindLayout(): Int = R.layout.layout_recyclerview
 
     override fun initView() {
@@ -44,9 +48,9 @@ class NewsChildFragment : BaseVMFragment<NewsVM>() {
 
     override fun startObserve() {
         super.startObserve()
-        mViewModel.uiState.observeForever {
+        mViewModel.news.observe(this, Observer {
             mAdapter.setDiffNewData(it.toMutableList())
-        }
+        })
     }
 
     override fun setListener() {

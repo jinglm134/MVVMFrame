@@ -2,7 +2,9 @@ package com.project.mvvmframe.ui.main
 
 import android.util.SparseArray
 import android.view.View
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.project.mvvmframe.R
 import com.project.mvvmframe.base.BaseVMActivity
 import com.project.mvvmframe.ui.main.home.HomeFragment
@@ -27,7 +29,6 @@ class MainActivity : BaseVMActivity<MainVM>() {
     }
 
     override fun initView(contentView: View) {
-        smartReplaceFragment(R.id.fl_main, fragments[0])
     }
 
     override fun setListener() {
@@ -42,6 +43,13 @@ class MainActivity : BaseVMActivity<MainVM>() {
             smartReplaceFragment(R.id.fl_main, fragments[position])
             true
         }
+        navView.selectedItemId = navView.menu[0].itemId
+    }
 
+    override fun startObserve() {
+        super.startObserve()
+        mViewModel.mainPosition.observe(this, Observer {
+            navView.selectedItemId = navView.menu[it].itemId
+        })
     }
 }

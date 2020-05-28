@@ -11,7 +11,7 @@ import com.project.mvvmframe.net.RetrofitClient
  */
 class NewsVM : BaseViewModel() {
 
-    val uiState = MutableLiveData<List<NewsBean>>()
+    val news = MutableLiveData<List<NewsBean>>()
     fun queryNews(keyWord: String) {
         launchOnUI {
             val result =
@@ -22,7 +22,7 @@ class NewsVM : BaseViewModel() {
                     )
                 })
             if (result != null) {
-                uiState.value = result
+                news.value = result
             }
         }
 

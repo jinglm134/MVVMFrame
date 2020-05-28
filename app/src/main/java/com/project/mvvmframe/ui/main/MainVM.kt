@@ -7,29 +7,24 @@ import com.project.mvvmframe.entity.WeatherBean
 import com.project.mvvmframe.net.RetrofitClient
 
 /**
- * @CreateDate 2020/5/21 17:12
+ * @CreateDate 2020/5/28 9:16
  * @Author jaylm
  */
-class MainVM : BaseViewModel() {
+open class MainVM : BaseViewModel() {
+    val mainPosition = MutableLiveData<Int>()
+    fun changePosition(position: Int) {
+        mainPosition.value = position
+    }
 
-    val uiState = MutableLiveData<WeatherBean>()
+
+    val weather = MutableLiveData<WeatherBean>()
     fun queryWeather(city: String) {
         launchOnUI {
             val result =
                 safeApiCall(call = { RetrofitClient.service.queryWeather(ApiConfig.API_KEY, city) })
             if (result != null) {
-                uiState.value = result
+                weather.value = result
             }
         }
-
-//        GlobalScope.launch {
-//            val result = withContext(Dispatchers.Default) {
-//                RetrofitClient.service.queryWeather(ApiConfig.API_KEY, city)
-//            }
-//            if (result.error_code == 0) {
-//                uiState.value = result.result
-//            }
-//        }
     }
 }
-
