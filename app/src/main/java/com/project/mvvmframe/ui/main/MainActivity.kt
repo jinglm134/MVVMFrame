@@ -44,6 +44,7 @@ class MainActivity : BaseVMActivity<MainVM>() {
             true
         }
         navView.selectedItemId = navView.menu[0].itemId
+
     }
 
     override fun startObserve() {

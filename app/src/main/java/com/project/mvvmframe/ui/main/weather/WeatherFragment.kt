@@ -20,6 +20,7 @@ class WeatherFragment : BaseVMFragment<MainVM>() {
     override fun bindLayout() = R.layout.fragment_weather
     override fun initView() {
         mViewModel.queryWeather("北京")
+        tv1.animate().translationX(500f).duration = 1000L
     }
 
     //    override fun providerVMClass() = MainVM::class.java

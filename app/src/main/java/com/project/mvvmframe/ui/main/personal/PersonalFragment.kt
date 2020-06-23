@@ -25,6 +25,8 @@ class PersonalFragment : BaseVMFragment<MainVM>() {
 
 
     override fun initView() {
+
+
     }
 
 
