@@ -14,6 +14,7 @@ object NetWorkUtils {
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager
         val info = manager.activeNetworkInfo
+
         return !(null == info || !info.isAvailable)
     }
 }

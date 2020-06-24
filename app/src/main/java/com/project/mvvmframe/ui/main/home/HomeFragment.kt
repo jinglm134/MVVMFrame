@@ -1,5 +1,7 @@
 package com.project.mvvmframe.ui.main.home
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.CountDownTimer
 import androidx.lifecycle.ViewModelProvider
 import com.project.mvvmframe.R
@@ -14,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : BaseVMFragment<MainVM>() {
     private var mTimer: CountDownTimer? = null
+    private var isChecked = false
 
     companion object {
         fun newInstance(): HomeFragment {
@@ -27,17 +30,31 @@ class HomeFragment : BaseVMFragment<MainVM>() {
 
 
     override fun initView() {
+
     }
+
 
     override fun setListener() {
         super.setListener()
         tv_pre.setOnClickListener {
-            mViewModel.changePosition(3)
+//            mViewModel.changePosition(3)
+            praiseView.setNum((Math.random() * 100).toInt())
         }
         tv_next.setOnClickListener {
             mViewModel.changePosition(1)
         }
+        ll_praise.setOnClickListener {
+            isChecked = !isChecked
+            iv_praise.setImageResource(if (isChecked) R.mipmap.icon_praise_check else R.mipmap.icon_praise_uncheck)
+            praiseView.startAnimal(praiseView.getNum() + if (isChecked) 1 else -1, 1000L)
+            val scaleX = ObjectAnimator.ofFloat(iv_praise, "scaleX", 1f, 1.5f, 1f)
+            val scaleY = ObjectAnimator.ofFloat(iv_praise, "scaleY", 1f, 1.5f, 1f)
+            val animator = AnimatorSet()
+            animator.play(scaleX).with(scaleY)
+            animator.setDuration(1000L).start()
+        }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

@@ -20,8 +20,10 @@ class PraiseView : View {
     private var progress: Float = 1F
 
     private var mNum: Int
+    private var mPreNum: Int
     private var textSize: Float
     private var color: Int
+    private var isAdd = true
 
     private lateinit var mCommonText: String
     private lateinit var mOldText: String
@@ -36,13 +38,18 @@ class PraiseView : View {
     ) {
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.PraiseView)
         mNum = attributes.getInt(R.styleable.PraiseView_text, 0)
+        mPreNum = mNum
         textSize = attributes.getDimension(R.styleable.PraiseView_textSize, 12F)
         color = attributes.getColor(
             R.styleable.PraiseView_textColor,
             resources.getColor(R.color.black_9)
         )
         attributes.recycle()
-        initView()
+        mPaint.color = color
+        mPaint.style = Paint.Style.FILL
+        mPaint.textSize = textSize
+        mPaint.textAlign = Paint.Align.LEFT
+        calText(true)
     }
 
     fun getProgress(): Float {
@@ -56,8 +63,9 @@ class PraiseView : View {
     }
 
     fun setNum(num: Int) {
+        mPreNum = mNum
         this.mNum = num
-        calText()
+        calText(true)
         requestLayout()
         invalidate()
     }
@@ -66,20 +74,9 @@ class PraiseView : View {
         return mNum
     }
 
-    private fun initView() {
-        mPaint.color = color
-        mPaint.style = Paint.Style.FILL
-        mPaint.textSize = textSize
-        mPaint.textAlign = Paint.Align.LEFT
-        calText()
-    }
-
-    fun startAnimal(isAdd: Boolean, duration: Long) {
-        if (isAdd) {
-            mNum++
-        } else {
-            mNum--
-        }
+    fun startAnimal(num: Int, duration: Long) {
+        mPreNum = mNum
+        this.mNum = num
         calText()
         requestLayout()
         ObjectAnimator.ofFloat(this, "progress", 0f, 1f).run {
@@ -105,8 +102,12 @@ class PraiseView : View {
         if (specMode == MeasureSpec.EXACTLY) {
             size = specSize
         } else {
-            size =
-                (if (isWidth) padding + mPaint.measureText(mNum.toString()) else padding + textSize * 3f).toInt()
+            size = if (isWidth) {
+                mPaint.measureText(mNum.coerceAtLeast(mPreNum).toString())
+            } else {
+                textSize * 3f
+            }.toInt() + padding
+
             if (specMode == MeasureSpec.AT_MOST) {
                 size = size.coerceAtMost(specSize)
             }
@@ -114,44 +115,64 @@ class PraiseView : View {
         return size
     }
 
-    private fun calText() {
-        val preText = (mNum - 1).toString()
+    private fun calText(isSet: Boolean = false) {
         val nowText = mNum.toString()
-
-        var len = 0
-        for (i in nowText.indices) {
-            if (preText.length <= i) {
-                break
+        if (isSet) {
+            mCommonText = nowText
+            mOldText = ""
+            mNowText = ""
+        } else {
+            val preText = mPreNum.toString()
+            var len = 0
+            for (i in nowText.indices) {
+                if (preText.length <= i) {
+                    break
+                }
+                if (preText[i] == nowText[i]) {
+                    len++
+                }
             }
-            if (preText[i] == nowText[i]) {
-                len++
-            }
+            mCommonText = nowText.substring(0, len)
+            mOldText = preText.substring(len, preText.length)
+            mNowText = nowText.substring(len, nowText.length)
         }
-
-        mCommonText = nowText.substring(0, len)
-        mOldText = preText.substring(len, preText.length)
-        mNowText = nowText.substring(len, nowText.length)
-
+        isAdd = mNum > mPreNum
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
+        //计算相同部分的宽度
         val commonWidth = mPaint.measureText(mCommonText)
+
+        //画相同部分
         mPaint.alpha = 255
         canvas.drawText(mCommonText, 0F, textSize * 2, mPaint)
+
+        //画新数据不同部分
         mPaint.alpha = (255 * progress).toInt()
+        val nowY = if (isAdd) {
+            3 - progress
+        } else {
+            1 + progress
+        } * textSize
         canvas.drawText(
             mNowText,
             commonWidth,
-            textSize * (3 - progress),
+            nowY,
             mPaint
         )
+
+        //画老数据不同部分
         mPaint.alpha = (255 * (1 - progress)).toInt()
+        val oldY = if (isAdd) {
+            2 - progress
+        } else {
+            2 + progress
+        } * textSize
         canvas.drawText(
             mOldText,
             commonWidth,
-            textSize * (2 - progress),
+            oldY,
             mPaint
         )
     }

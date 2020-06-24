@@ -19,16 +19,13 @@ class MainActivity : BaseVMActivity<MainVM>() {
     override fun providerVMClass() = MainVM::class.java
     override fun bindLayout(): Int = R.layout.activity_main
 
-    init {
+    override fun initView(contentView: View) {
         fragments.apply {
             put(0, HomeFragment.newInstance())
             put(1, NewsFragment.newInstance())
             put(2, WeatherFragment.newInstance())
             put(3, PersonalFragment.newInstance())
         }
-    }
-
-    override fun initView(contentView: View) {
     }
 
     override fun setListener() {

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_news.*
  * @Author jaylm
  */
 class NewsFragment : BaseVMFragment<MainVM>() {
-    private val titles = mutableListOf("手机", "电脑", "汽车", "奥巴马", "特朗普", "新闻", "笑话")
+    private val titles = mutableListOf("奥巴马", "特朗普", "一")
     private val fragments = mutableListOf<NewsChildFragment>()
     private lateinit var mAdapter: FragmentStateAdapter
 
