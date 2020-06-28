@@ -35,9 +35,37 @@
             app:textSize="16sp" />
     </LinearLayout>
 
+    <com.project.mvvmframe.widget.VolumeView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:arcWidth="5dp"
+        app:backgroundColor="@color/black_f0"
+        app:circleWidth="35dp"
+        app:progress="20"
+        app:progressColor="@color/black_6"
+        app:splitWidth="2dp"
+        app:src="@mipmap/icon_volume"
+        app:strokeWidth="3dp" />
+
+    <com.project.mvvmframe.widget.CountEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:hint="CountEditText"
+        app:countTextSize="10sp"
+        app:totalChar="60" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">

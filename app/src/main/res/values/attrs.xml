@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="PraiseView">
-        <attr name="text" format="integer"/>
-        <attr name="textSize" format="dimension"/>
-        <attr name="textColor" format="color"/>
+        <attr name="text" format="integer" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="VolumeView">
+        <attr name="backgroundColor" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="circleWidth" format="dimension" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="progress" format="integer" />
+        <attr name="splitWidth" format="dimension" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="src" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CountEditText">
+        <attr name="totalChar" format="integer" />
+        <attr name="countTextSize" format="dimension" />
+        <attr name="countTextColor" format="color" />
+        <attr name="lineColor" format="color" />
+    </declare-styleable>
+
 </resources>

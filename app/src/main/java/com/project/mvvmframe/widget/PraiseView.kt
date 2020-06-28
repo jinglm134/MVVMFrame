@@ -12,6 +12,7 @@ import com.project.mvvmframe.R
 
 
 /**
+ * 点赞view
  * @CreateDate 2020/6/22 14:52
  * @Author jaylm
  */
@@ -39,7 +40,7 @@ class PraiseView : View {
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.PraiseView)
         mNum = attributes.getInt(R.styleable.PraiseView_text, 0)
         mPreNum = mNum
-        textSize = attributes.getDimension(R.styleable.PraiseView_textSize, 12F)
+        textSize = attributes.getDimension(R.styleable.PraiseView_textSize, dp2px(12f))
         color = attributes.getColor(
             R.styleable.PraiseView_textColor,
             resources.getColor(R.color.black_9)
@@ -105,7 +106,10 @@ class PraiseView : View {
             size = if (isWidth) {
                 mPaint.measureText(mNum.coerceAtLeast(mPreNum).toString())
             } else {
-                textSize * 3f
+//                val textMetrics: Paint.FontMetrics = mPaint.fontMetrics
+//                val relativeHeight = -textMetrics.ascent - textMetrics.descent
+//                relativeHeight * 3f
+                textSize * 3
             }.toInt() + padding
 
             if (specMode == MeasureSpec.AT_MOST) {
@@ -140,7 +144,6 @@ class PraiseView : View {
     }
 
     override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
         //计算相同部分的宽度
         val commonWidth = mPaint.measureText(mCommonText)
 
@@ -177,4 +180,9 @@ class PraiseView : View {
         )
     }
 
+
+    private fun dp2px(dpValue: Float): Float {
+        val scale = resources.displayMetrics.density
+        return dpValue * scale
+    }
 }
