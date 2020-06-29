@@ -25,6 +25,5 @@ class NewsVM : BaseViewModel() {
                 news.value = result
             }
         }
-
     }
 }

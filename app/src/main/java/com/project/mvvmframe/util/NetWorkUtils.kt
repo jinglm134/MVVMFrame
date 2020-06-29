@@ -8,13 +8,11 @@ import android.net.ConnectivityManager
  * @CreateDate 2020/5/21 10:37
  * @Author jaylm
  */
-object NetWorkUtils {
-    fun isNetworkAvailable(context: Context): Boolean {
-        val manager = context.applicationContext.getSystemService(
-            Context.CONNECTIVITY_SERVICE
-        ) as ConnectivityManager
-        val info = manager.activeNetworkInfo
 
-        return !(null == info || !info.isAvailable)
-    }
+fun Context.isNetworkAvailable(): Boolean {
+    val manager = this.applicationContext.getSystemService(
+        Context.CONNECTIVITY_SERVICE
+    ) as ConnectivityManager
+    val info = manager.activeNetworkInfo
+    return !(null == info || !info.isAvailable)
 }

@@ -9,6 +9,15 @@ import com.project.mvvmframe.app.BaseApp
  * @CreateDate 2020/4/21 18:04
  * @Author jaylm
  */
+
+fun CharSequence.toast(context: Context = BaseApp.context) {
+    UToast.showToast(context, this, Toast.LENGTH_SHORT)
+}
+
+fun CharSequence.toastLong(context: Context = BaseApp.context) {
+    UToast.showToast(context, this, Toast.LENGTH_LONG)
+}
+
 object UToast {
     private var sToast: Toast? = null
     private var isJumpWhenMore: Boolean = true
@@ -26,28 +35,6 @@ object UToast {
 
 
     /**
-     * 显示短时吐司
-     *
-     * @param context 上下文
-     * @param text    文本
-     */
-    fun showShortToast(text: CharSequence, context: Context = BaseApp.context) {
-        showToast(context, text, Toast.LENGTH_SHORT)
-    }
-
-
-    /**
-     * 显示长时吐司
-     *
-     * @param context 上下文
-     * @param text    文本
-     */
-    fun showLongToast(text: CharSequence, context: Context = BaseApp.context) {
-        showToast(context, text, Toast.LENGTH_LONG)
-    }
-
-
-    /**
      * 显示吐司
      *
      * @param context  上下文
@@ -55,7 +42,7 @@ object UToast {
      * @param duration 显示时长
      */
     @SuppressLint("ShowToast")
-    private fun showToast(context: Context, text: CharSequence, duration: Int) {
+    fun showToast(context: Context, text: CharSequence, duration: Int) {
         if (isJumpWhenMore) cancelToast()
         if (sToast == null) {
             sToast = Toast.makeText(context.applicationContext, text, duration)

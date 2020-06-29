@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.project.mvvmframe.R
+import com.project.mvvmframe.util.dp
 import kotlin.math.abs
 import kotlin.math.sqrt
 
@@ -50,10 +51,10 @@ class VolumeView : View {
             resources.getColor(R.color.black_6)
         )
 
-        arcWidth = attributes.getDimension(R.styleable.VolumeView_arcWidth, dp2px(10f))
-        splitWidth = attributes.getDimension(R.styleable.VolumeView_splitWidth, dp2px(4f))
-        strokeWidth = attributes.getDimension(R.styleable.VolumeView_strokeWidth, dp2px(2f))
-        r = attributes.getDimension(R.styleable.VolumeView_circleWidth, dp2px(30f))
+        arcWidth = attributes.getDimension(R.styleable.VolumeView_arcWidth, 10f.dp)
+        splitWidth = attributes.getDimension(R.styleable.VolumeView_splitWidth, 4f.dp)
+        strokeWidth = attributes.getDimension(R.styleable.VolumeView_strokeWidth, 2f.dp)
+        r = attributes.getDimension(R.styleable.VolumeView_circleWidth, 30f.dp)
         progress = attributes.getInt(R.styleable.VolumeView_progress, 0)
         bitmap = BitmapFactory.decodeResource(
             resources,
@@ -187,10 +188,5 @@ class VolumeView : View {
     fun setProgress(progress: Int) {
         this.progress = progress
         invalidate()
-    }
-
-    private fun dp2px(dpValue: Float): Float {
-        val scale = resources.displayMetrics.density
-        return dpValue * scale
     }
 }

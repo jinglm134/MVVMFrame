@@ -9,8 +9,7 @@ import com.project.mvvmframe.R
 import com.project.mvvmframe.adapter.NewsAdapter
 import com.project.mvvmframe.base.BaseVMFragment
 import com.project.mvvmframe.entity.NewsBean
-import com.project.mvvmframe.ui.main.MainVM
-import com.project.mvvmframe.util.UToast
+import com.project.mvvmframe.util.toast
 import com.project.mvvmframe.widget.decoration.LinearDecoration
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 
@@ -55,7 +54,7 @@ class NewsChildFragment : BaseVMFragment<NewsVM>() {
 
     override fun setListener() {
         super.setListener()
-        mAdapter.setOnItemClickListener { _, _, position -> UToast.showShortToast(position.toString()) }
+        mAdapter.setOnItemClickListener { _, _, position -> position.toString().toast() }
     }
 
 

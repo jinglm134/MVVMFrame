@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatDialog
 import com.project.mvvmframe.R
 import com.project.mvvmframe.util.UShape
-import com.project.mvvmframe.util.USize
+import com.project.mvvmframe.util.getScreenWidth
 
 /**
  * @CreateDate 2020/5/26 16:37
@@ -40,7 +40,7 @@ class CommonDialog private constructor(context: Context, theme: Int) :
             )
             mDialog.addContentView(
                 mRootView, ViewGroup.LayoutParams(
-                    (USize.getScreenWidth() * 0.75).toInt(),
+                    (getScreenWidth() * 0.75).toInt(),
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             )

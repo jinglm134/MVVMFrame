@@ -52,10 +52,10 @@ object UShape {
      * @return Bitmap
      */
     fun getRoundedCornerBitmap(bitmap: Bitmap): Bitmap {
-        return getRoundedCornerBitmap(bitmap, USize.dp2px(4f))
+        return getRoundedCornerBitmap(bitmap, 4f.dp)
     }
 
-    private fun getRoundedCornerBitmap(bitmap: Bitmap, radius: Int): Bitmap {
+    private fun getRoundedCornerBitmap(bitmap: Bitmap, radius: Float): Bitmap {
         val min = 200
         val outBitmap = Bitmap.createBitmap(
             min,
@@ -97,7 +97,7 @@ object UShape {
     private fun getCornerDrawable(color: Int, corners: FloatArray): ShapeDrawable {
         val martCorners = FloatArray(corners.size)
         for (i in corners.indices) {
-            martCorners[i] = USize.dp2px(corners[i]).toFloat()
+            martCorners[i] = corners[i].dp
         }
 
         val drawable = ShapeDrawable(RoundRectShape(martCorners, null, null))
@@ -435,8 +435,8 @@ object UShape {
     fun getStrokeDrawable(strokeColor: Int, solidColor: Int, corner: Int): GradientDrawable {
         val gd = GradientDrawable()
         gd.setColor(solidColor)
-        gd.cornerRadius = USize.dp2px(corner.toFloat()).toFloat()
-        gd.setStroke(USize.dp2px(1f), strokeColor)
+        gd.cornerRadius = corner.toFloat().dp
+        gd.setStroke(1f.dp.toInt(), strokeColor)
         return gd
     }
 

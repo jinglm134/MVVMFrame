@@ -2,13 +2,16 @@ package com.project.mvvmframe.widget
 
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.annotation.Keep
 import com.project.mvvmframe.R
+import com.project.mvvmframe.util.sp
 
 
 /**
@@ -40,7 +43,7 @@ class PraiseView : View {
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.PraiseView)
         mNum = attributes.getInt(R.styleable.PraiseView_text, 0)
         mPreNum = mNum
-        textSize = attributes.getDimension(R.styleable.PraiseView_textSize, dp2px(12f))
+        textSize = attributes.getDimension(R.styleable.PraiseView_textSize, 12f.sp)
         color = attributes.getColor(
             R.styleable.PraiseView_textColor,
             resources.getColor(R.color.black_9)
@@ -178,11 +181,5 @@ class PraiseView : View {
             oldY,
             mPaint
         )
-    }
-
-
-    private fun dp2px(dpValue: Float): Float {
-        val scale = resources.displayMetrics.density
-        return dpValue * scale
     }
 }

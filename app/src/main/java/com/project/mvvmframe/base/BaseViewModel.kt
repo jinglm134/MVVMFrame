@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.project.mvvmframe.app.AppManager
 import com.project.mvvmframe.entity.BaseBean
 import com.project.mvvmframe.net.RequestException
-import com.project.mvvmframe.util.UToast
+import com.project.mvvmframe.util.toast
 import com.project.mvvmframe.widget.dialog.ProgressDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +35,7 @@ open class BaseViewModel : ViewModel() {
                 data = result.result
             }
         } catch (e: Exception) {
-            UToast.showShortToast(RequestException.exceptionHandler(e))
+            RequestException.exceptionHandler(e).toast()
         } finally {
             builder?.dismiss()
             return data

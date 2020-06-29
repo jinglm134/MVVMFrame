@@ -8,7 +8,7 @@ import androidx.annotation.ColorRes
 import androidx.recyclerview.widget.RecyclerView
 import com.project.mvvmframe.R
 import com.project.mvvmframe.util.UShape
-import com.project.mvvmframe.util.USize
+import com.project.mvvmframe.util.dp
 
 /**
  * recyclerView decoration
@@ -19,18 +19,28 @@ import com.project.mvvmframe.util.USize
  * @param padding       线的边距        默认 0dp
  * @param hideLastLine  隐藏最后一根线   默认 true
  */
-class LinearDecoration(@ColorRes color: Int = R.color.black_f0, height: Float = 1F, padding: Int = 0, private val hideLastLine: Boolean = true) : RecyclerView.ItemDecoration() {
+class LinearDecoration(
+    @ColorRes color: Int = R.color.black_f0,
+    height: Float = 1F,
+    padding: Float = 0f,
+    private val hideLastLine: Boolean = true
+) : RecyclerView.ItemDecoration() {
     private var mDividerHeight: Int
     private var mPadding: Int
     private var dividerPaint = Paint()
 
     init {
         dividerPaint.color = UShape.getColor(color)
-        mDividerHeight = USize.dp2px(height)
-        mPadding = USize.dp2px(padding.toFloat())
+        mDividerHeight = height.dp.toInt()
+        mPadding = padding.dp.toInt()
     }
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         super.getItemOffsets(outRect, view, parent, state)
         outRect.bottom = mDividerHeight
     }

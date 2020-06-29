@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.AppCompatEditText
 import com.project.mvvmframe.R
+import com.project.mvvmframe.util.sp
 
 /**
  * @CreateDate 2020/6/28 14:51
@@ -35,7 +36,7 @@ class CountEditText : AppCompatEditText {
             context.obtainStyledAttributes(attrs, R.styleable.CountEditText)
         totalChar = typedArray.getInteger(R.styleable.CountEditText_totalChar, 20)
         countTextSize =
-            typedArray.getDimension(R.styleable.CountEditText_countTextSize, dp2px(12f))
+            typedArray.getDimension(R.styleable.CountEditText_countTextSize, 12f.sp)
         countTextColor = typedArray.getColor(
             R.styleable.CountEditText_countTextColor,
             getColor(R.color.black_9)
@@ -93,11 +94,6 @@ class CountEditText : AppCompatEditText {
         )
     }
 
-
-    private fun dp2px(dpValue: Float): Float {
-        val scale = resources.displayMetrics.density
-        return dpValue * scale
-    }
 
     private fun getColor(@ColorRes rId: Int): Int {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
