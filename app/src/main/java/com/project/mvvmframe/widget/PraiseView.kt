@@ -2,11 +2,10 @@ package com.project.mvvmframe.widget
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.annotation.Keep
@@ -28,6 +27,7 @@ class PraiseView : View {
     private var textSize: Float
     private var color: Int
     private var isAdd = true
+    private var mTextBound = Rect()
 
     private lateinit var mCommonText: String
     private lateinit var mOldText: String
@@ -53,6 +53,7 @@ class PraiseView : View {
         mPaint.style = Paint.Style.FILL
         mPaint.textSize = textSize
         mPaint.textAlign = Paint.Align.LEFT
+        mPaint.getTextBounds(mNum.toString(), 0, mNum.toString().length, mTextBound)
         calText(true)
     }
 
@@ -107,13 +108,10 @@ class PraiseView : View {
             size = specSize
         } else {
             size = if (isWidth) {
-                mPaint.measureText(mNum.coerceAtLeast(mPreNum).toString())
+                mPaint.measureText(mNum.coerceAtLeast(mPreNum).toString()).toInt()
             } else {
-//                val textMetrics: Paint.FontMetrics = mPaint.fontMetrics
-//                val relativeHeight = -textMetrics.ascent - textMetrics.descent
-//                relativeHeight * 3f
-                textSize * 3
-            }.toInt() + padding
+                mTextBound.height() * 3
+            } + padding
 
             if (specMode == MeasureSpec.AT_MOST) {
                 size = size.coerceAtMost(specSize)
@@ -152,15 +150,15 @@ class PraiseView : View {
 
         //画相同部分
         mPaint.alpha = 255
-        canvas.drawText(mCommonText, 0F, textSize * 2, mPaint)
+        canvas.drawText(mCommonText, 0F, measuredHeight / 3f * 2, mPaint)
 
         //画新数据不同部分
         mPaint.alpha = (255 * progress).toInt()
         val nowY = if (isAdd) {
-            3 - progress
+            (3 - progress) / 3
         } else {
-            1 + progress
-        } * textSize
+            (1 + progress) / 3
+        } * measuredHeight
         canvas.drawText(
             mNowText,
             commonWidth,
@@ -171,10 +169,10 @@ class PraiseView : View {
         //画老数据不同部分
         mPaint.alpha = (255 * (1 - progress)).toInt()
         val oldY = if (isAdd) {
-            2 - progress
+            (2 - progress) / 3
         } else {
-            2 + progress
-        } * textSize
+            (2 + progress) / 3
+        } * measuredHeight
         canvas.drawText(
             mOldText,
             commonWidth,

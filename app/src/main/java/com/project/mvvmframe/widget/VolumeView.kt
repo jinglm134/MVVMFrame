@@ -17,7 +17,7 @@ import kotlin.math.sqrt
  */
 class VolumeView : View {
     companion object {
-        private const val OFFSET = 5
+        private const val OFFSET = 3
     }
 
     private val colorBg: Int//圆环背景色
@@ -36,6 +36,8 @@ class VolumeView : View {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+
+    @Suppress("deprecation")
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
@@ -141,23 +143,20 @@ class VolumeView : View {
         }
     }
 
-    private var xDown = 0f
-    private var xUp = 0f
-    private var yDown = 0f
-    private var yUp = 0f
+    private var xPoint = 0f
+    private var yPoint = 0f
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
-                xDown = event.x
-                yDown = event.y
+                xPoint = event.x
+                yPoint = event.y
                 return true
             }
             MotionEvent.ACTION_MOVE -> {
-                xUp = event.x
-                yUp = event.y
 
-                val offsetX = xUp - xDown
-                val offsetY = yUp - yDown
+                val offsetX = event.x - xPoint
+                val offsetY = event.y - yPoint
                 if (abs(offsetX) > abs(offsetY)) {
                     if (offsetX > OFFSET) {
                         progress++
@@ -175,6 +174,9 @@ class VolumeView : View {
                         invalidate()
                     }
                 }
+
+                xPoint = event.x
+                yPoint = event.y
             }
         }
 

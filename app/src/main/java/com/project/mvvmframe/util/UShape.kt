@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.project.mvvmframe.util
 
 import android.R
@@ -66,7 +64,7 @@ object UShape {
         val rect = Rect(0, 0, min, min)
         val rectF = RectF(rect)
         val canvas = Canvas(outBitmap)
-        canvas.drawRoundRect(rectF, radius.toFloat(), radius.toFloat(), paint)
+        canvas.drawRoundRect(rectF, radius, radius, paint)
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
         canvas.drawBitmap(bitmap, Rect(0, 0, bitmap.width, bitmap.height), rect, paint)
         return outBitmap
@@ -469,6 +467,7 @@ object UShape {
      * @param rId rId
      * @return int color
      */
+    @Suppress("deprecation")
     fun getColor(@ColorRes rId: Int): Int {
         val context = BaseApp.context
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

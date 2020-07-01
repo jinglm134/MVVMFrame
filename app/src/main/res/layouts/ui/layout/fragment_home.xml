@@ -52,15 +52,21 @@
 
     <com.project.mvvmframe.widget.CountEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@null"
+        android:hint="CountEditText"
         android:inputType="text"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:hint="CountEditText"
         app:countTextSize="10sp"
-        app:totalChar="60" />
+        app:totalChar="20" />
+
+    <com.project.mvvmframe.widget.ScratchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
