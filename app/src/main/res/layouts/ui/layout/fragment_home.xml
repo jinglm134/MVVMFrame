@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
     tools:context=".ui.main.MainActivity"
     tools:ignore="HardcodedText">
 
@@ -13,9 +15,7 @@
         android:id="@+id/ll_praise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_praise"
@@ -39,8 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         app:arcWidth="5dp"
         app:backgroundColor="@color/black_f0"
         app:circleWidth="35dp"
@@ -57,24 +55,137 @@
         android:background="@null"
         android:hint="CountEditText"
         android:inputType="text"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         app:countTextSize="10sp"
         app:totalChar="20" />
 
     <com.project.mvvmframe.widget.ScratchView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginTop="10dp" />
+
+
+    <com.project.mvvmframe.widget.FlowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="30"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="40"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="50"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="60"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="70"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="80"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="90"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="150"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="200"
+            android:textColor="@color/black_6" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:text="250"
+            android:textColor="@color/black_6" />
+
+    </com.project.mvvmframe.widget.FlowLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/tv_pre"
