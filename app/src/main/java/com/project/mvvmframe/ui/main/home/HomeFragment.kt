@@ -2,10 +2,12 @@ package com.project.mvvmframe.ui.main.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.CountDownTimer
 import androidx.lifecycle.ViewModelProvider
 import com.project.mvvmframe.R
 import com.project.mvvmframe.base.BaseVMFragment
+import com.project.mvvmframe.ui.VoiceActivity
 import com.project.mvvmframe.ui.main.MainVM
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -43,6 +45,11 @@ class HomeFragment : BaseVMFragment<MainVM>() {
         tv_next.setOnClickListener {
             mViewModel.changePosition(1)
         }
+
+        tv_voice.setOnClickListener {
+            startActivity(Intent(activity, VoiceActivity::class.java))
+        }
+
         ll_praise.setOnClickListener {
             isChecked = !isChecked
             iv_praise.setImageResource(if (isChecked) R.mipmap.icon_praise_check else R.mipmap.icon_praise_uncheck)

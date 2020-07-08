@@ -33,8 +33,15 @@
             android:name=".ui.main.MainActivity"
             android:launchMode="singleTask" />
 
-        <activity android:name=".ui.NavigationActivity" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:parentActivityName=".ui.main.MainActivity" />
 
+        <activity android:name=".ui.NavigationActivity" />
+        <activity android:name=".ui.VoiceActivity" />
+
+        <service android:name=".ui.service.TimeService" />
+        <service android:name=".ui.service.VoiceService" />
     </application>
 
 </manifest>

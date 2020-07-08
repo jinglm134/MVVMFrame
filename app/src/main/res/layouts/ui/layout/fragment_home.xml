@@ -70,122 +70,154 @@
         android:layout_marginTop="10dp">
 
         <TextView
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="30"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="android"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="40"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="java"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="50"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="kotlin"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="60"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="swift"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="70"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="scala"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="80"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="html"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="90dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="90"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="css"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="100"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="python"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="150"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="go"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:text="200"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="200000000000"
             android:textColor="@color/black_6" />
 
         <TextView
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:text="250"
             android:textColor="@color/black_6" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="22222222222"
+            android:textColor="@color/black_6" />
     </com.project.mvvmframe.widget.FlowLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/tv_pre"
@@ -209,5 +241,25 @@
             android:text="nextFragment"
             android:textColor="@color/white"
             android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_voice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/press_btn_green"
+            android:gravity="center"
+            android:text="voiceActivity"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
     </LinearLayout>
 </LinearLayout>
