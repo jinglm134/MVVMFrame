@@ -38,7 +38,8 @@
             android:parentActivityName=".ui.main.MainActivity" />
 
         <activity android:name=".ui.NavigationActivity" />
-        <activity android:name=".ui.VoiceActivity" />
+        <activity android:name=".ui.main.home.VoiceActivity" />
+        <activity android:name=".ui.main.home.AnimatorActivity" />
 
         <service android:name=".ui.service.TimeService" />
         <service android:name=".ui.service.VoiceService" />

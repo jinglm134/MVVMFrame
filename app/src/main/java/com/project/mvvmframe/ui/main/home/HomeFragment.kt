@@ -7,7 +7,6 @@ import android.os.CountDownTimer
 import androidx.lifecycle.ViewModelProvider
 import com.project.mvvmframe.R
 import com.project.mvvmframe.base.BaseVMFragment
-import com.project.mvvmframe.ui.VoiceActivity
 import com.project.mvvmframe.ui.main.MainVM
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -32,7 +31,6 @@ class HomeFragment : BaseVMFragment<MainVM>() {
 
 
     override fun initView() {
-
     }
 
 
@@ -50,6 +48,10 @@ class HomeFragment : BaseVMFragment<MainVM>() {
             startActivity(Intent(activity, VoiceActivity::class.java))
         }
 
+        tv_animator.setOnClickListener {
+            startActivity(Intent(activity, AnimatorActivity::class.java))
+        }
+
         ll_praise.setOnClickListener {
             isChecked = !isChecked
             iv_praise.setImageResource(if (isChecked) R.mipmap.icon_praise_check else R.mipmap.icon_praise_uncheck)
@@ -61,7 +63,6 @@ class HomeFragment : BaseVMFragment<MainVM>() {
             animator.setDuration(1000L).start()
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

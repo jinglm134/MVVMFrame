@@ -1,4 +1,4 @@
-package com.project.mvvmframe.ui
+package com.project.mvvmframe.ui.main.home
 
 import android.content.ComponentName
 import android.content.Context
@@ -18,11 +18,12 @@ import kotlinx.android.synthetic.main.activity_voice.*
 class VoiceActivity : BaseActivity() {
     override fun bindLayout(): Int = R.layout.activity_voice
     private var mBinder: VoiceService.VoiceBinder? = null
-    private lateinit var voiceIntent: Intent
+    private lateinit var serviceConnection: MyServiceConnection
 
     override fun initView(contentView: View) {
-        voiceIntent = Intent(this, VoiceService::class.java)
-        bindService(voiceIntent, MyServiceConnection(), Context.BIND_AUTO_CREATE)
+        val voiceIntent = Intent(this, VoiceService::class.java)
+        serviceConnection = MyServiceConnection()
+        bindService(voiceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
 
     override fun setListener() {
@@ -48,5 +49,10 @@ class VoiceActivity : BaseActivity() {
             mBinder = service as VoiceService.VoiceBinder
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unbindService(serviceConnection)
     }
 }

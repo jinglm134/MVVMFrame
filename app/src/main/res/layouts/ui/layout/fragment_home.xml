@@ -214,6 +214,16 @@
             android:textColor="@color/black_6" />
     </com.project.mvvmframe.widget.FlowLayout>
 
+    <TextView
+        android:id="@+id/tv_animator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/press_btn_green"
+        android:gravity="center"
+        android:text="animatorActivity"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -259,7 +269,6 @@
             android:text="voiceActivity"
             android:textColor="@color/white"
             android:textSize="16sp" />
-
 
     </LinearLayout>
 </LinearLayout>
